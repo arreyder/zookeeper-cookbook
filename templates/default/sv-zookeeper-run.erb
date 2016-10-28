@@ -1,0 +1,8 @@
+#!/bin/bash
+#
+ZOOHOME="<%= node['zk']['install_dir'] %>"
+ZOOCFGDIR="$ZOOHOME/conf"
+ZOOCFG="$ZOOCFGDIR/zoo.cfg"
+ZOOVER="<%= node['zk']['version'] %>"
+
+exec chpst -u daemon -o 65535 /usr/lib/jvm/java/bin/java -Dlog4j.configuration=file:$ZOOCFGDIR/log4j-server.properties -cp $ZOOHOME/lib/*:$ZOOHOME/build/lib/*.jar:$ZOOHOME/zookeeper-$ZOOVER.jar:$ZOOHOME/src/java/lib/*.jar:$ZOOHOME/conf -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.local.only=false org.apache.zookeeper.server.quorum.QuorumPeerMain $ZOOHOME/conf/zoo.cfg 2>&1

@@ -1,0 +1,9 @@
+input {
+  file {
+    path => "/etc/sv/zookeeper/log/main/current"
+    codec => json
+    type => "zookeeper"
+    tags => [ "<%= node.chef_environment %>", "<%= node.datacenter %>" ]
+  }
+}
+

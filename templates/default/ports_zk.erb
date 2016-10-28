@@ -1,0 +1,7 @@
+<% @zk_servers.each do |n| -%>
+-A FWR -i <%= node['network']['default_interface'] %> -s <%= n %>/32 -p tcp --dport 2888 -j ACCEPT
+-A FWR -i <%= node['network']['default_interface'] %> -s <%= n %>/32 -p tcp --dport 3888 -j ACCEPT
+<% end -%>
+<% @zk_clients.each do |n| -%>
+-A FWR -i <%= node['network']['default_interface'] %> -s <%= n %>/32 -p tcp --dport 2181 -j ACCEPT
+<% end -%>

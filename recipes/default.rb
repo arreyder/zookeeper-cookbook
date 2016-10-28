@@ -144,7 +144,7 @@ iptables_rule 'ports_zk' do
 end
 
 if node['zk']['logstash']
-  include_recipe 'tgt-elk-wrapper::logstash_agent'
+  include_recipe 'elk-wrapper::logstash_agent'
   template '/opt/logstash/agent/etc/conf.d/input_zk_logs.conf' do
     source 'input_zk_logs.conf.erb'
 #    notifies :restart, "logstash_service['logstash_agent']", :delayed

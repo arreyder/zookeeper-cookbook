@@ -1,4 +1,4 @@
-include_recipe 'esv_base'
+include_recipe 'base'
 
 if node['artifactory_url']
   java_path = "#{node['artifactory_url']}/chef/java"
